@@ -1,0 +1,154 @@
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: block !important;
+}
+
+#game {
+  margin-top: 4rem;   /* below topBar */
+}
+#topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3.5rem;
+  background-color: #2160a4;
+  color: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 1.5rem;
+  z-index: 1000;
+}
+
+#playerInfo {
+  color:#ffffff;
+  font-weight: 600;
+}
+
+#timer {
+  color:#ffffff;
+  font-weight: 600;
+}
+#questions-container {
+  padding-bottom: 7rem; /* must be >= nav bar height */
+  margin-bottom: 6rem;  /* space for bottom buttons */
+}
+
+/* EACH QUESTION */
+
+.question-block {
+  margin-bottom: 30px;
+  padding: 1.5rem 2rem;
+  border: 1px solid rgba(86, 165, 235, 0.3);
+  border-radius: 6px;
+  background-color: #ffffff;
+}
+
+.question-block h3 {
+  font-size: 1.7rem;
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+  margin-top: 30px;
+}
+
+/* OPTIONS */
+
+.question-block label {
+  display: block;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  padding: 0.6rem;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.question-block input[type="radio"] {
+  transform: scale(1.2);
+}
+
+/* Disable old feedback styles without breaking layout */
+.correct,
+.incorrect {
+  background: none !important;
+}
+/* NEXT / SKIP BUTTON */
+.nav-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 1rem 1.5rem;
+
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+
+  z-index: 1000;
+}
+#nextBtn {
+  gap: 1rem;
+  display: block;
+  padding: 2.5rem 2.5rem;
+  font-size: 1.6rem;
+  border-radius: 5px; 
+}
+#skipBtn {
+  gap: 1rem;
+  display: block;
+  padding: 2.5rem 2.5rem;
+  font-size: 1.6rem;
+  border-radius: 5px; 
+}
+
+/* HUD (KEEP CLEAN) */
+
+#hud {
+  position: static;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.hud-prefix {
+  position: static;
+  width: auto;
+  background: none;
+  border: none;
+}
+
+.hud-main-text {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* PROGRESS BAR */
+
+#progressBar {
+  width: 18rem;
+  height: 1.8rem;
+  border: 2px solid #56a5eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+#progressBarFull {
+  gap: 1rem;
+  margin-top: 30px;
+  height: 100%;
+  background-color: #56a5eb;
+  width: 0%;
+}
