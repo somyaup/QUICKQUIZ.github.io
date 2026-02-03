@@ -11,7 +11,7 @@ const playerNumber = localStorage.getItem("playerNumber")+"T1B";
 
 let sets = [];
 let currentSetIndex = 0;
-let score = localStorage.getItem('mostRecentScore');
+let score = parseInt(localStorage.getItem('mostRecentScore'));
 scoreText.innerText = score;
 let gameLog = {
   playerNumber: playerNumber,
@@ -37,8 +37,8 @@ fetch("questions2.json")
 
 // ---------- START GAME ----------
 function startGame() {
-  score = localStorage.getItem('mostRecentScore');
-  scoreText.innerText = score
+  score = parseInt(localStorage.getItem('mostRecentScore'));
+  scoreText.innerText = score;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
