@@ -132,7 +132,7 @@ function endQuiz(reason) {
     });
   }
   gameLog.total = score;
-  sendResultsToSheet(gameLog);
+  // sendResultsToSheet(gameLog);
   window.location.href = "end.html";
 }
 
