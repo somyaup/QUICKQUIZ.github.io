@@ -11,18 +11,18 @@ const playerNumber = localStorage.getItem("playerNumber")+"T1B";
 
 let sets = [];
 let currentSetIndex = 0;
-let score = parseInt(localStorage.getItem('mostRecentScore'));
+let score = localStorage.getItem('mostRecentScore');
 scoreText.innerText = score;
 let gameLog = {
-  playerNumber: playerNumber,
+  playerNumber: playerNumber+"start",
   playerName: playerName,
   total: 0,
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 15;
 
-const TOTAL_TIME = 450; // seconds
+const TOTAL_TIME = 600; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
@@ -33,12 +33,13 @@ fetch("questions2.json")
     sets = data; // JSON already an array of sets
     startGame();
   })
-  .catch(err => console.error("Failed to load questions.json:", err));
+  .catch(err => console.error("Failed to load questions2.json:", err));
 
 // ---------- START GAME ----------
 function startGame() {
-  score = parseInt(localStorage.getItem('mostRecentScore'));
-  scoreText.innerText = score;
+  sendResultsToSheet(gameLog);
+  score = localStorage.getItem('mostRecentScore');
+  scoreText.innerText = score
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
@@ -52,7 +53,7 @@ function startGame() {
 //--------------START TIMER--------------
 function startTimer() {
   timerInterval = setInterval(() => {
-    timeRemaining--;
+    //timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
     seconds = timeRemaining % 60;
     timeLeftText.innerText =
@@ -134,6 +135,7 @@ function endQuiz(reason) {
     });
   }
   gameLog.total = score;
+  gameLog.playerNumber= playerNumber;
   scoreText.innerText = score;
   sendResultsToSheet(gameLog);
   localStorage.setItem("mostRecentScore", score)
@@ -189,7 +191,7 @@ skipBtn.addEventListener("click", () => {
   loadSet();
 });
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
+const WEB_APP_URL =""; // "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
 function sendResultsToSheet(data2) {
   fetch(WEB_APP_URL, {
     method: "POST",
@@ -199,6 +201,5 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
-  alert("done");
 }
 

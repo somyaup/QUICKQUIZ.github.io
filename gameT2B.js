@@ -11,16 +11,16 @@ const playerNumber = localStorage.getItem("playerNumber")+"T2A";
 
 let sets = [];
 let currentSetIndex = 0;
-let score = parseInt(localStorage.getItem('mostRecentScore'));
+let score = localStorage.getItem('mostRecentScore');
 scoreText.innerText = score;
 let gameLog = {
-  playerNumber: playerNumber,
+  playerNumber: playerNumber+"start",
   playerName: playerName,
   total: 0,
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 15;
 
 const TOTAL_TIME = 900; // seconds
 let timeRemaining = TOTAL_TIME;
@@ -37,7 +37,8 @@ fetch("questions2.json")
 
 // ---------- START GAME ----------
 function startGame() {
-  score =parseInt( localStorage.getItem('mostRecentScore'));
+  sendResultsToSheet(gameLog);
+  score = localStorage.getItem('mostRecentScore');
   scoreText.innerText = score;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
@@ -133,6 +134,7 @@ function endQuiz(reason) {
       action: reason === "timeout" ? "timeout" : "end"
     });
   }
+  gameLog.playerNumber=playerNumber;
   gameLog.total = score;
   scoreText.innerText = score;
   sendResultsToSheet(gameLog);
@@ -199,6 +201,5 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
-  alert("done");
 }
 

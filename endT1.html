@@ -11,18 +11,28 @@
     <div class="container">
       <div id="end" class="flex-center flex-column">
         <h1 id="finalScore"></h1>
-        <form>
-          <input
-            type="text"
-            name="username"
-            id="username"
-            placeholder="username"
-          />
-        </form>
+        <h2 id="participation">(Excluding Participation Fee)</h2>
+        <div id="timer" style="font-size: 100px; font-weight: bold; text-align: center; font-family: sans-serif; margin-top: 50px;">60</div>
         <a class="btn" href="gameT1A.html">Play a new set for 2X?</a>
-        <a class="btn" href="gameT1B.html">Continue for 15 minutes?</a>
+        <a class="btn" href="gameT1B.html">Continue for 10 minutes?</a>
       </div>
     </div>
     <script src="end.js"></script>
+    <script>let timeLeft = 60;
+const timerElement = document.getElementById("timer");
+const countdown = setInterval(() => {
+    timeLeft--;
+    timerElement.innerText = timeLeft;
+    // Optional: Make it turn red when low
+    if (timeLeft <= 10) {
+        timerElement.style.color = "red";
+    }
+    if (timeLeft <= 0) {
+        clearInterval(countdown);
+        timerElement.innerText = "Time's Up!";
+        timerElement.style.color = "black";
+    }
+}, 1000);
+</script>
   </body>
 </html>
