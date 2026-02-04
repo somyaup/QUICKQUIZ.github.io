@@ -197,4 +197,3 @@ function sendResultsToSheet(data2) {
   });
   alert("done");
 }
-
