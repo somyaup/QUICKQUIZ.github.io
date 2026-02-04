@@ -16,9 +16,7 @@ let gameLog = {
   playerNumber: playerNumber,
   playerName: playerName,
   total: 0,
-  results: [
-    { set: "SET 0", time: 0, score: 0, action: "dummy" }
-  ]
+  results: []
 };
 let setStartTimestamp = null;
 const CORRECT_BONUS = 10;
@@ -134,7 +132,6 @@ function endQuiz(reason) {
     });
   }
   gameLog.total = score;
-  alert(JSON.stringify(gameLog, null, 4));
   sendResultsToSheet(gameLog);
   window.location.href = "end.html";
 }
@@ -188,7 +185,7 @@ skipBtn.addEventListener("click", () => {
   loadSet();
 });
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
+const WEB_APP_URL = "";// "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
 function sendResultsToSheet(data2) {
   fetch(WEB_APP_URL, {
     method: "POST",
