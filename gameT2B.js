@@ -11,7 +11,7 @@ const playerNumber = localStorage.getItem("playerNumber")+"T2A";
 
 let sets = [];
 let currentSetIndex = 0;
-let score = localStorage.getItem('mostRecentScore');
+let score = parseInt(localStorage.getItem('mostRecentScore'));
 scoreText.innerText = score;
 let gameLog = {
   playerNumber: playerNumber+"start",

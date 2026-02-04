@@ -11,7 +11,7 @@ const playerNumber = localStorage.getItem("playerNumber")+"T1B";
 
 let sets = [];
 let currentSetIndex = 0;
-let score = localStorage.getItem('mostRecentScore');
+let score = parseInt(localStorage.getItem('mostRecentScore'));
 scoreText.innerText = score;
 let gameLog = {
   playerNumber: playerNumber+"start",
@@ -191,7 +191,8 @@ skipBtn.addEventListener("click", () => {
   loadSet();
 });
 
-const WEB_APP_URL =""; // "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
+// const WAU_T1B = "https://script.google.com/macros/s/AKfycbx3cv5MY351g11Sm31m2E2dglhcJWbKF5OqBJzSGrJgbg1DSmuX6cseJA07DOpHXkkJvA/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
 function sendResultsToSheet(data2) {
   fetch(WEB_APP_URL, {
     method: "POST",
@@ -201,5 +202,13 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
+  // fetch(WAU_T1B, {
+  //   method: "POST",
+  //   body: JSON.stringify(data2)
+  // })
+  // .catch(err => {
+  //   alert(err);
+  //   console.error(err);
+  // });
 }
 
