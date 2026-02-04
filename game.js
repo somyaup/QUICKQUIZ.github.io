@@ -23,7 +23,7 @@ let gameLog = {
 let setStartTimestamp = null;
 const CORRECT_BONUS = 10;
 
-const TOTAL_TIME = 900; // seconds
+const TOTAL_TIME = 000; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
@@ -52,7 +52,7 @@ function startGame() {
 //--------------START TIMER--------------
 function startTimer() {
   timerInterval = setInterval(() => {
-    timeRemaining--;
+    //timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
     seconds = timeRemaining % 60;
     timeLeftText.innerText =
