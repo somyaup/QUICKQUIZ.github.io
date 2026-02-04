@@ -28,7 +28,7 @@ let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
 // ---------- LOAD QUESTIONS ----------
-fetch("questions.json")
+fetch("DEMOquestions.json")
   .then(res => res.json())
   .then(data => {
     sets = data; // JSON already an array of sets
