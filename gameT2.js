@@ -21,7 +21,7 @@ let gameLog = {
   ]
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 15;
 
 const TOTAL_TIME = 900; // seconds
 let timeRemaining = TOTAL_TIME;
@@ -199,6 +199,5 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
-  alert("done");
 }
 

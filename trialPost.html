@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apps Script Connectivity Test</title>
+</head>
+<body>
+
+  <h2>Apps Script → Google Sheet Test</h2>
+
+  <button id="sendBtn">Send Dummy Data</button>
+
+  <p id="status"></p>
+
+  <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const dummyData = {
+        playerNumber: "new",
+        playerName: "person",
+        total: 123,
+        results: [
+          { set: "SET 1", time: 10, score: 10, action: "next" },
+          { set: "SET 2", time: 5, score: 0, action: "skip" }
+        ]
+      };
+
+      fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify(dummyData)
+      })
+      .then(res => res.text())
+      .then(text => {
+        document.getElementById("status").innerText =
+          "Response from Apps Script: " + text;
+      })
+      .catch(err => {
+        document.getElementById("status").innerText =
+          "ERROR: " + err;
+        console.error(err);
+      });
+    });
+  </script>
+
+</body>
+</html>

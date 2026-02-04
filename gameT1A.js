@@ -13,15 +13,15 @@ let sets = [];
 let currentSetIndex = 0;
 let score = 0;
 let gameLog = {
-  playerNumber: playerNumber,
+  playerNumber: playerNumber+"start",
   playerName: playerName,
   total: 0,
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 20;
+const CORRECT_BONUS = 30;
 
-const TOTAL_TIME = 450; // seconds
+const TOTAL_TIME = 600; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
@@ -49,6 +49,7 @@ function startGame() {
 }
 //--------------START TIMER--------------
 function startTimer() {
+  sendResultsToSheet(gameLog);
   timerInterval = setInterval(() => {
     timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
@@ -132,6 +133,7 @@ function endQuiz(reason) {
     });
   }
   gameLog.total = score;
+  gameLog.playerNumber= playerNumber;
   sendResultsToSheet(gameLog);
   localStorage.setItem("mostRecentScore", score)
   window.location.href = "end.html";
@@ -196,6 +198,5 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
-  alert("done");
 }
 

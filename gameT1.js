@@ -19,9 +19,9 @@ let gameLog = {
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 10;
+const CORRECT_BONUS = 15;
 
-const TOTAL_TIME = 450; // seconds
+const TOTAL_TIME = 600; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
@@ -49,6 +49,7 @@ function startGame() {
 }
 //--------------START TIMER--------------
 function startTimer() {
+  sendResultsToSheet(gameLog);
   timerInterval = setInterval(() => {
     timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
@@ -196,6 +197,5 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
-  alert("done");
 }
 

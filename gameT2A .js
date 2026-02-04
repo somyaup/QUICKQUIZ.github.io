@@ -13,13 +13,13 @@ let sets = [];
 let currentSetIndex = 0;
 let score = 0;
 let gameLog = {
-  playerNumber: playerNumber,
+  playerNumber: playerNumber+"Start",
   playerName: playerName,
   total: 0,
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 20;
+const CORRECT_BONUS = 30;
 
 const TOTAL_TIME = 900; // seconds
 let timeRemaining = TOTAL_TIME;
@@ -36,6 +36,7 @@ fetch("questions2.json")
 
 // ---------- START GAME ----------
 function startGame() {
+  sendResultsToSheet(gameLog);
   score = 0;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
@@ -131,6 +132,7 @@ function endQuiz(reason) {
       action: reason === "timeout" ? "timeout" : "end"
     });
   }
+  gameLog.playerNumber=playerNumber;
   gameLog.total = score;
   sendResultsToSheet(gameLog);
   localStorage.setItem("mostRecentScore", score)
@@ -196,6 +198,5 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
-  alert("done");
 }
 
