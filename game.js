@@ -21,7 +21,7 @@ let gameLog = {
 let setStartTimestamp = null;
 const CORRECT_BONUS = 10;
 
-const TOTAL_TIME = 0; // seconds
+const TOTAL_TIME = 10; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
