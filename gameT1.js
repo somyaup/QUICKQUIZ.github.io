@@ -13,7 +13,7 @@ let sets = [];
 let currentSetIndex = 0;
 let score = 0;
 let gameLog = {
-  playerNumber: playerNumber,
+  playerNumber: playerNumber+"start",
   playerName: playerName,
   total: 0,
   results: []
@@ -133,6 +133,7 @@ function endQuiz(reason) {
     });
   }
   gameLog.total = score;
+  gameLog.playerNumber = playerNumber;
   sendResultsToSheet(gameLog);
   localStorage.setItem("mostRecentScore", score);
   window.location.href = "endT1.html";
@@ -186,7 +187,6 @@ skipBtn.addEventListener("click", () => {
   currentSetIndex++;
   loadSet();
 });
-
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
 function sendResultsToSheet(data2) {
   fetch(WEB_APP_URL, {

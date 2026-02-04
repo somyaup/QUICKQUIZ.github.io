@@ -188,6 +188,7 @@ skipBtn.addEventListener("click", () => {
   loadSet();
 });
 
+// const WAU_T1A ="https://script.google.com/macros/s/AKfycbz4Oc2xaNXb6dA4s9AAl6C4Birp9dxJBj1k6dIlDdMylQM0O9r0BgEeSCDc8P-WgaFj4w/exec";
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
 function sendResultsToSheet(data2) {
   fetch(WEB_APP_URL, {
@@ -198,5 +199,13 @@ function sendResultsToSheet(data2) {
     alert(err);
     console.error(err);
   });
+  // fetch(WAU_T1A, {
+  //   method: "POST",
+  //   body: JSON.stringify(data2)
+  // })
+  // .catch(err => {
+  //   alert(err);
+  //   console.error(err);
+  // });
 }
 
