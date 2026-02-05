@@ -1,61 +1,59 @@
 [
   {
-    "set":"SET 1",
-    "list":
-    [
+    "set": "INTERVAL 2 - SET 1",
+    "list": [
       {
-        "question": "Inside which HTML element do we put the JavaScript??",
-        "choice1": "script",
-        "choice2": "javascript",
-        "choice3": "js",
-        "choice4": "scripting",
+        "question": "A is 3 years older than B, who is twice as old as C. If the total of their ages is 33, how old is B?",
+        "choice1": "12",
+        "choice2": "14",
+        "choice3": "16",
+        "choice4": "18",
         "answer": 1
       },
       {
-        "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
-        "choice1": "script href='xxx.js'",
-        "choice2": "script name='xxx.js'",
-        "choice3": "script src='xxx.js'",
-        "choice4": "script file='xxx.js'",
-        "answer": 3
+        "question": "Here x is the answer to the previous question. A shop gives an x% discount on a product with Marked Price Rs. 250. What is the total discount given?",
+        "choice1": "30",
+        "choice2": "25",
+        "choice3": "40",
+        "choice4": "50",
+        "answer": 1
       },
       {
-        "question": " How do you write 'Hello World' in an alert box?",
-        "choice1": "msgBox('Hello World');",
-        "choice2": "alertBox('Hello World');",
-        "choice3": "msg('Hello World');",
-        "choice4": "alert('Hello World');",
-        "answer": 4
+        "question": "Here y is your answer to the previous sub-part. Find the missing number.\nA B C\n1 15 y\n3 10 60\n4 12 96\n5 14 ?",
+        "choice1": "130",
+        "choice2": "140",
+        "choice3": "154",
+        "choice4": "170",
+        "answer": 2
       }
     ]
   },
   {
-  "set":"SET 2",
-  "list":
-    [
+    "set": "INTERVAL 2 - SET 2",
+    "list": [
       {
-        "question": "Inside which HTML element do we put the JavaScript??",
-        "choice1": "script",
-        "choice2": "javascript",
-        "choice3": "js",
-        "choice4": "scripting",
+        "question": "The ratio of A’s age to B’s age is 2:3. After 6 years, it becomes 4:5. Find A’s present age.",
+        "choice1": "12",
+        "choice2": "6",
+        "choice3": "8",
+        "choice4": "10",
+        "answer": 2
+      },
+      {
+        "question": "Here x is the answer to the previous sub-part. A shopkeeper marks an article 25% above cost and gives an x% discount. His profit % is closest to:",
+        "choice1": "18",
+        "choice2": "15",
+        "choice3": "24",
+        "choice4": "21",
         "answer": 1
       },
       {
-        "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
-        "choice1": "script href='xxx.js'",
-        "choice2": "script name='xxx.js'",
-        "choice3": "script src='xxx.js'",
-        "choice4": "script file='xxx.js'",
+        "question": "Here y is the answer to the 2nd sub-part. Find the missing number.\nA B C\n3 5 31\n4 y 73\n5 7 129\n8 11 ?",
+        "choice1": "576",
+        "choice2": "1340",
+        "choice3": "521",
+        "choice4": "1323",
         "answer": 3
-      },
-      {
-        "question": " How do you write 'Hello World' in an alert box?",
-        "choice1": "msgBox('Hello World');",
-        "choice2": "alertBox('Hello World');",
-        "choice3": "msg('Hello World');",
-        "choice4": "alert('Hello World');",
-        "answer": 4
       }
     ]
   }
