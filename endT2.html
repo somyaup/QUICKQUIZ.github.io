@@ -10,12 +10,18 @@
   <body>
     <div class="container">
       <div id="end" class="flex-center flex-column">
-         <h1 >You earned INR</h1>
+        <h1 >You earned INR</h1>
         <h1 id="finalScore"></h1>
         <h2 id="participation">(Excluding Participation Fee)</h2>
+        <a class="widebtn" href="gameT2B.html">
+          Keep your earnings from Round 1
+          & Continue earning ₹15 per correct set in Round 2?
+        </a>
+        <a class="widebtn" href="gameT2A.html">
+          Your Round 1 earnings will be reset to ₹0 &
+          Earn ₹30 per correct set in Round 2 only?
+        </a>
         <div id="timer" style="font-size: 100px; font-weight: bold; text-align: center; font-family: sans-serif; margin-top: 50px;">60</div>
-        <a class="btn" href="gameT2A.html">Play a new set for 2X?</a>
-        <a class="btn" href="gameT2B.html">Continue for 15 minutes?</a>
       </div>
     </div>
     <script src="end.js"></script>
@@ -35,5 +41,16 @@ const countdown = setInterval(() => {
     }
 }, 1000);
 </script>
+<style>.widebtn {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  width: 60rem;
+  text-align: center;
+  border: 0.1rem solid #56a5eb;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  color: #0c66b5;
+  background-color: white;
+}</style>
   </body>
 </html>
