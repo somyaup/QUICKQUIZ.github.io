@@ -1,6 +1,6 @@
 [
   {
-    "set": "INTERVAL 2 - SET 1",
+    "set": "ROUND 2 - SET 1",
     "list": [
       {
         "question": "A is 3 years older than B, who is twice as old as C. If the total of their ages is 33, how old is B?",
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "set": "INTERVAL 2 - SET 2",
+    "set": "ROUND 2 - SET 2",
     "list": [
       {
         "question": "The ratio of A’s age to B’s age is 2:3. After 6 years, it becomes 4:5. Find A’s present age.",
