@@ -153,7 +153,7 @@ body {
   width: 0%;
 }
 input[type="radio"] {
-  width: 20px; /* Adjust size as needed */
-  height: 20px; /* Adjust size as needed */
-  vertical-align: middle; /* Helps with alignment next to text */
+  width: 15px; /* Adjust size as needed */
+  height: 15px; /* Adjust size as needed */
+  vertical-align: left; /* Helps with alignment next to text */
 }
