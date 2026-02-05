@@ -1,6 +1,6 @@
 [
   {
-    "set": "INTERVAL 1 - SET 1",
+    "set": "ROUND 1 - SET 1",
     "list": [
       {
         "question": "A is two years older than B who is twice as old as C. If the total of the ages of A, B and C be 27, then how old is B?",
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "set": "INTERVAL 1 - SET 2",
+    "set": "ROUND 1 - SET 2",
     "list": [
       {
         "question": "The ratio of A’s age to B’s age is 3:5. After 8 years, it becomes 5:7. Find A’s present age.",
@@ -58,7 +58,7 @@
     ]
   },
   {
-    "set": "INTERVAL 1 - SET 3",
+    "set": "ROUND 1 - SET 3",
     "list": [
       {
         "question": "Five years ago, Rina was half as old as her mother. After 5 years, Rina’s age will be 20. Find her mother’s present age.",
@@ -87,7 +87,7 @@
     ]
   },
   {
-    "set": "INTERVAL 1 - SET 4",
+    "set": "ROUND 1 - SET 4",
     "list": [
       {
         "question": "The present ages of Ram and Shyam are in the ratio 3:4. After 6 years, their ratio becomes 4:5. Find Ram’s present age.",
@@ -116,7 +116,7 @@
     ]
   },
   {
-    "set": "INTERVAL 1 - SET 5",
+    "set": "ROUND 1 - SET 5",
     "list": [
       {
         "question": "A man is 22 years older than his son. In two years, his age will be twice the age of his son. The present age of his son is:",
@@ -145,7 +145,7 @@
     ]
   },
   {
-    "set": "INTERVAL 1 - SET 6",
+    "set": "ROUND 1 - SET 6",
     "list": [
       {
         "question": "The ratio of ages of A and B is 3:4 and their sum is 70. In 10 years from today, B’s age will be:",
@@ -174,7 +174,7 @@
     ]
   },
   {
-    "set": "INTERVAL 1 - SET 7",
+    "set": "ROUND 1 - SET 7",
     "list": [
       {
         "question": "A is 7 years older than B, who is twice as old as C. If the total of their ages is 32, how old is B?",
