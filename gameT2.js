@@ -87,8 +87,8 @@ function loadSet() {
   playerDisplay.innerText = `${playerName} (#${playerNumber})`;
   setTitle.innerText = currentSet.set;
   // Progress / UI
-  progressText.innerText =
-    `${currentSet.set} (${currentSetIndex + 1} / ${sets.length})`;
+  // progressText.innerText =
+  //   `${currentSet.set} (${currentSetIndex + 1} / ${sets.length})`;
   progressBarFull.style.width =
     `${((currentSetIndex + 1) / sets.length) * 100}%`;
 
