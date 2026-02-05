@@ -95,7 +95,7 @@ function loadSet() {
   questions.forEach((q, qIndex) => {
     const block = document.createElement("div");
     block.className = "question-block";
-
+    q.question = renderQuestion(q.question);
     block.innerHTML = `
       <h3>${q.question}</h3>
       ${[1, 2, 3, 4].map(n => `
@@ -187,7 +187,9 @@ skipBtn.addEventListener("click", () => {
   currentSetIndex++;
   loadSet();
 });
-
+function renderQuestion(text) {
+  return text.replace(/\n/g, "<br>");
+}
 // const WAU_T1A ="https://script.google.com/macros/s/AKfycbz4Oc2xaNXb6dA4s9AAl6C4Birp9dxJBj1k6dIlDdMylQM0O9r0BgEeSCDc8P-WgaFj4w/exec";
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
 function sendResultsToSheet(data2) {
