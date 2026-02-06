@@ -36,8 +36,10 @@ fetch("questions2.json")
 
 // ---------- START GAME ----------
 function startGame() {
+  sendResultsToSheet(gameLog);
   score = 0;
   currentSetIndex = 0;
+  scoreText.innerText = score;
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
   timeLeftText.innerText =
@@ -49,7 +51,6 @@ function startGame() {
 }
 //--------------START TIMER--------------
 function startTimer() {
-  sendResultsToSheet(gameLog);
   timerInterval = setInterval(() => {
     timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
