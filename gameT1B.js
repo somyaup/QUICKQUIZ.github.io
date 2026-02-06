@@ -39,7 +39,7 @@ fetch("questions2.json")
 function startGame() {
   sendResultsToSheet(gameLog);
   score = localStorage.getItem('mostRecentScore');
-  scoreText.innerText = score
+  scoreText.innerText = score;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
