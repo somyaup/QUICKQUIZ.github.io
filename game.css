@@ -33,7 +33,10 @@ body {
   color:#ffffff;
   font-weight: 600;
 }
-
+#timeleft {
+  color:#ff0000;
+  font-weight: 800;
+}
 #timer {
   color:#ffffff;
   font-weight: 600;
