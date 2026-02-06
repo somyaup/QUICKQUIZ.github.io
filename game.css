@@ -15,31 +15,40 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-
+  flex-direction: column; 
   width: 100%;
-  height: 3.5rem;
+  height: 3.5 rem;
   background-color: #2160a4;
   color: white;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
-  padding: 0 1.5rem;
+  padding: 1rem 1.5rem;
   z-index: 1000;
 }
 
 #playerInfo {
-  color:#ffffff;
+  font-size: 1.7rem;
   font-weight: 600;
+  text-align: center;
+  align-self: center;
+}
+#playerDisplay {
+  color:#ffffff;
+  font-weight: 1600;
 }
 #timeLeft {
   color:#ff0000;
-  font-weight: 800;
+  font-weight: 1600;
 }
 #timer {
-  color:#ffffff;
+  color:#ff0000;
+  font-size: 3rem;
   font-weight: 600;
+  text-align: center;
+  align-self: center;
 }
 #questions-container {
   padding-bottom: 7rem; /* must be >= nav bar height */
