@@ -7,7 +7,7 @@ const progressBarFull = document.getElementById("progressBarFull");
 const setTitle = document.getElementById("setTitle");
 const timeLeftText = document.getElementById("timeLeft");
 const playerName = localStorage.getItem("playerName");
-const playerNumber = localStorage.getItem("playerNumber")+"T1A";
+const playerNumber = localStorage.getItem("playerNumber")+"T2A";
 
 let sets = [];
 let currentSetIndex = 0;

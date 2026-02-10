@@ -7,7 +7,7 @@ const progressBarFull = document.getElementById("progressBarFull");
 const setTitle = document.getElementById("setTitle");
 const timeLeftText = document.getElementById("timeLeft");
 const playerName = localStorage.getItem("playerName");
-const playerNumber = localStorage.getItem("playerNumber")+"T2A";
+const playerNumber = localStorage.getItem("playerNumber")+"T2B";
 
 let sets = [];
 let currentSetIndex = 0;
@@ -21,8 +21,15 @@ let gameLog = {
 };
 let setStartTimestamp = null;
 const CORRECT_BONUS = 15;
-
-const TOTAL_TIME = 900; // seconds
+const currentSetLog = {
+  set: 0,
+  setTime: 0,
+  action: null,
+  setScore: 0,
+  // IMPORTANT: pre-fill with nulls
+  questions: []
+};
+const TOTAL_TIME = 1200; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
@@ -37,9 +44,6 @@ fetch("questions2.json")
 
 // ---------- START GAME ----------
 function startGame() {
-  sendResultsToSheet(gameLog);
-  score = localStorage.getItem('mostRecentScore');
-  scoreText.innerText = score;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
   const seconds = timeRemaining % 60;
@@ -52,6 +56,7 @@ function startGame() {
 }
 //--------------START TIMER--------------
 function startTimer() {
+  sendResultsToSheet(gameLog);
   timerInterval = setInterval(() => {
     timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
@@ -59,7 +64,7 @@ function startTimer() {
     timeLeftText.innerText =
     `${minutes}:${seconds.toString().padStart(2, "0")}`;
 
-    if (timeRemaining <= 0) {
+    if (timeRemaining <=0) {
       clearInterval(timerInterval);
       endQuiz("timeout");
     }
@@ -70,7 +75,8 @@ function loadSet() {
   questionsContainer.innerHTML = "";
   setStartTimestamp = Date.now();
   nextBtn.disabled = true;
-
+  questionAnswered = [];
+  // prepare question slots
   if (currentSetIndex >= sets.length) {
     clearInterval(timerInterval);
     localStorage.setItem("mostRecentScore", score);
@@ -81,9 +87,13 @@ function loadSet() {
 
   const currentSet = sets[currentSetIndex];
   const questions = currentSet.list;
-
+  currentSetLog.questions = questions.map((_, i) => ({
+    qid: i + 1,
+    time: null,
+    response: null,
+    correct: false
+  }));
   // SET NAME DISPLAY
-
   const playerDisplay = document.getElementById("playerInfo");
   playerDisplay.innerText = `${playerName} (#${playerNumber})`;
   setTitle.innerText = currentSet.set;
@@ -97,7 +107,7 @@ function loadSet() {
   questions.forEach((q, qIndex) => {
     const block = document.createElement("div");
     block.className = "question-block";
-    q.question = renderQuestion(q.question);
+    q.question=renderQuestion(q.question);
     block.innerHTML = `
       <h3>${q.question}</h3>
       ${[1, 2, 3, 4].map(n => `
@@ -107,20 +117,34 @@ function loadSet() {
         </label>
       `).join("")}
     `;
-
     questionsContainer.appendChild(block);
   });
 }
 
 // ---------- ENABLE NEXT ONLY IF ALL ANSWERED ----------
-questionsContainer.addEventListener("change", () => {
-  const questions = sets[currentSetIndex].list;
+questionsContainer.addEventListener("click", (event) => {
+  if (event.target.type !== "radio") return;
 
-  const allAnswered = questions.every((_, i) =>
-    document.querySelector(`input[name="q${i}"]:checked`)
-  );
+  const qIndex = Number(event.target.name.replace("q", ""));
+  const optionClicked = Number(event.target.value);
 
-  nextBtn.disabled = !allAnswered;
+  // record time ONLY on first interaction
+  if (!questionAnswered[qIndex]) {
+    questionAnswered[qIndex] = true;
+
+    const timeSpent =
+      Math.round((Date.now() - setStartTimestamp) / 1000);
+
+    currentSetLog.questions[qIndex].time = timeSpent;
+  }
+
+  // always update response & correctness
+  currentSetLog.questions[qIndex].response = optionClicked;
+  currentSetLog.questions[qIndex].correct =
+    optionClicked === sets[currentSetIndex].list[qIndex].answer;
+
+  // enable NEXT only when all questions touched
+  nextBtn.disabled = !questionAnswered.every(Boolean);
 });
 
 function endQuiz(reason) {
@@ -131,14 +155,14 @@ function endQuiz(reason) {
       set: sets[currentSetIndex].set,
       time: timeTaken,
       score: 0,
-      action: reason === "timeout" ? "timeout" : "end"
+      action: reason === "timeout" ? "timeout" : "end",
+      questions: currentSetLog.questions
     });
   }
-  gameLog.playerNumber=playerNumber;
   gameLog.total = score;
-  scoreText.innerText = score;
+  gameLog.playerNumber = playerNumber;
   sendResultsToSheet(gameLog);
-  localStorage.setItem("mostRecentScore", score)
+  localStorage.setItem("mostRecentScore", score);
   window.location.href = "end.html";
 }
 
@@ -166,7 +190,8 @@ nextBtn.addEventListener("click", () => {
     set: sets[currentSetIndex].set,
     time: timeTaken,
     score: setScore,
-    action: "next"
+    action: "next",
+    questions: currentSetLog.questions
   });
 
   score += setScore;
@@ -184,7 +209,8 @@ skipBtn.addEventListener("click", () => {
     set: sets[currentSetIndex].set,
     time: timeTaken,
     score: 0,
-    action: "skip"
+    action: "skip",
+    questions: currentSetLog.questions
   });
 
   currentSetIndex++;

@@ -11,7 +11,6 @@ const playerNumber = localStorage.getItem("playerNumber")+"T1";
 
 let sets = [];
 let currentSetIndex = 0;
-let questionAnswered = [];
 let score = 0;
 let gameLog = {
   playerNumber: playerNumber+"start",
@@ -21,14 +20,7 @@ let gameLog = {
 };
 let setStartTimestamp = null;
 const CORRECT_BONUS = 15;
-const currentSetLog = {
-  set: 0,
-  setTime: 0,
-  action: null,
-  setScore: 0,
-  // IMPORTANT: pre-fill with nulls
-  questions: []
-};
+
 const TOTAL_TIME = 600; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
@@ -76,8 +68,7 @@ function loadSet() {
   questionsContainer.innerHTML = "";
   setStartTimestamp = Date.now();
   nextBtn.disabled = true;
-  questionAnswered = [];
-  // prepare question slots
+
   if (currentSetIndex >= sets.length) {
     clearInterval(timerInterval);
     localStorage.setItem("mostRecentScore", score);
@@ -88,13 +79,9 @@ function loadSet() {
 
   const currentSet = sets[currentSetIndex];
   const questions = currentSet.list;
-  currentSetLog.questions = questions.map((_, i) => ({
-    qid: i + 1,
-    time: null,
-    response: null,
-    correct: false
-  }));
+
   // SET NAME DISPLAY
+
   const playerDisplay = document.getElementById("playerInfo");
   playerDisplay.innerText = `${playerName} (#${playerNumber})`;
   setTitle.innerText = currentSet.set;
@@ -118,34 +105,20 @@ function loadSet() {
         </label>
       `).join("")}
     `;
+
     questionsContainer.appendChild(block);
   });
 }
 
 // ---------- ENABLE NEXT ONLY IF ALL ANSWERED ----------
-questionsContainer.addEventListener("click", (event) => {
-  if (event.target.type !== "radio") return;
+questionsContainer.addEventListener("change", () => {
+  const questions = sets[currentSetIndex].list;
 
-  const qIndex = Number(event.target.name.replace("q", ""));
-  const optionClicked = Number(event.target.value);
+  const allAnswered = questions.every((_, i) =>
+    document.querySelector(`input[name="q${i}"]:checked`)
+  );
 
-  // record time ONLY on first interaction
-  if (!questionAnswered[qIndex]) {
-    questionAnswered[qIndex] = true;
-
-    const timeSpent =
-      Math.round((Date.now() - setStartTimestamp) / 1000);
-
-    currentSetLog.questions[qIndex].time = timeSpent;
-  }
-
-  // always update response & correctness
-  currentSetLog.questions[qIndex].response = optionClicked;
-  currentSetLog.questions[qIndex].correct =
-    optionClicked === sets[currentSetIndex].list[qIndex].answer;
-
-  // enable NEXT only when all questions touched
-  nextBtn.disabled = !questionAnswered.every(Boolean);
+  nextBtn.disabled = !allAnswered;
 });
 
 function endQuiz(reason) {
@@ -156,8 +129,7 @@ function endQuiz(reason) {
       set: sets[currentSetIndex].set,
       time: timeTaken,
       score: 0,
-      action: reason === "timeout" ? "timeout" : "end",
-      questions: currentSetLog.questions
+      action: reason === "timeout" ? "timeout" : "end"
     });
   }
   gameLog.total = score;
@@ -191,8 +163,7 @@ nextBtn.addEventListener("click", () => {
     set: sets[currentSetIndex].set,
     time: timeTaken,
     score: setScore,
-    action: "next",
-    questions: currentSetLog.questions
+    action: "next"
   });
 
   score += setScore;
@@ -210,8 +181,7 @@ skipBtn.addEventListener("click", () => {
     set: sets[currentSetIndex].set,
     time: timeTaken,
     score: 0,
-    action: "skip",
-    questions: currentSetLog.questions
+    action: "skip"
   });
 
   currentSetIndex++;
