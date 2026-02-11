@@ -57,6 +57,7 @@ function startGame() {
 }
 //--------------START TIMER--------------
 function startTimer() {
+  sendResultsToSheet(gameLog);
   timerInterval = setInterval(() => {
     timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
