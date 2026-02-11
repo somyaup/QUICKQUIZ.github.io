@@ -36,6 +36,8 @@ fetch("demoquestions.json")
 
 // ---------- START GAME ----------
 function startGame() {
+  skipBtn.disabled = true;
+  //skipBtn.style.display = "none"; // optional (hide it)
   score = 0;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
@@ -72,7 +74,7 @@ function loadSet() {
     clearInterval(timerInterval);
     localStorage.setItem("mostRecentScore", score);
     endQuiz("Out of questions")
-    window.location.href = "end.html";
+    // window.location.href = "end.html";
     return;
   }
 
@@ -108,7 +110,18 @@ function loadSet() {
     questionsContainer.appendChild(block);
   });
 }
+questionsContainer.addEventListener("change", () => {
+  const questions = sets[currentSetIndex].list;
 
+  const allCorrect = questions.every((q, i) => {
+    const selected = document.querySelector(
+      `input[name="q${i}"]:checked`
+    );
+    return selected && Number(selected.value) === q.answer;
+  });
+
+  nextBtn.disabled = !allCorrect;
+});
 // ---------- ENABLE NEXT ONLY IF ALL ANSWERED ----------
 questionsContainer.addEventListener("change", () => {
   const questions = sets[currentSetIndex].list;
@@ -133,7 +146,7 @@ function endQuiz(reason) {
   }
   gameLog.total = score;
   // sendResultsToSheet(gameLog);
-  window.location.href = "end.html";
+  // window.location.href = "end.html";
 }
 
 
@@ -141,21 +154,34 @@ function endQuiz(reason) {
 nextBtn.addEventListener("click", () => {
   const questions = sets[currentSetIndex].list;
   let setScore = 1;
+
   questions.forEach((q, i) => {
-    const selected = document.querySelector(
-      `input[name="q${i}"]:checked`
+    const options = document.querySelectorAll(
+      `input[name="q${i}"]`
     );
-    if (selected && Number(selected.value) === q.answer) {
-      setScore *= 1;
-    }
-    else{
-      setScore *= 0;
-    }
-    setScore *=CORRECT_BONUS;
-  });
+
+    options.forEach(opt => {
+      const label = opt.parentElement;
+
+      // Remove previous classes
+      label.classList.remove("correct-option", "incorrect-option");
+
+      // Add green to correct answer
+      if (Number(opt.value) === q.answer) {
+        label.classList.add("correct-option");
+      }
+
+      // Add red to incorrectly selected answer
+      if (opt.checked && Number(opt.value) !== q.answer) {
+        label.classList.add("incorrect-option");
+        setScore = 0;
+      }
+
+    });
+  }); 
   const timeTaken =
     Math.round((Date.now() - setStartTimestamp) / 1000);
-  console.log(timeTaken);
+
   gameLog.results.push({
     set: sets[currentSetIndex].set,
     time: timeTaken,
@@ -163,11 +189,21 @@ nextBtn.addEventListener("click", () => {
     action: "next"
   });
 
-  score += setScore;
+  setScore *= CORRECT_BONUS; // since allCorrect required
+  if(setScore == 0) {alert ("You got a few questions wrong! Refrsh and Retry");}  
+  else {
+    alert ("You got all questions right! Proceed to the new link!");
+    skipBtn.disabled = false;
+  } 
 
+  score += setScore;
   scoreText.innerText = score;
-  currentSetIndex++;
-  loadSet();
+
+  // Small delay so user sees color feedback
+  setTimeout(() => {
+    currentSetIndex++;
+    loadSet();
+  }, 80000);
 });
 
 // ---------- SKIP ----------
