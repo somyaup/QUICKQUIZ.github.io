@@ -20,7 +20,7 @@ let gameLog = {
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 15;
+const CORRECT_BONUS = 30;
 const currentSetLog = {
   set: 0,
   setTime: 0,
