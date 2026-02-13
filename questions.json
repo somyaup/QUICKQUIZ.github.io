@@ -32,7 +32,7 @@
     "set": "ROUND 1 - SET 2",
     "list": [
       {
-        "question": "The ratio of A’s age to B’s age is 3:5. After 8 years, it becomes 5:7. Find A’s present age.",
+        "question": "The ratio of A's age to B's age is 3:5. After 8 years, it becomes 5:7. Find A’s present age.",
         "choice1": "15",
         "choice2": "18",
         "choice3": "12",
@@ -61,7 +61,7 @@
     "set": "ROUND 1 - SET 3",
     "list": [
       {
-        "question": "Five years ago, Rina was half as old as her mother. After 5 years, Rina’s age will be 20. Find her mother’s present age.",
+        "question": "Five years ago, Rina was half as old as her mother. After 5 years, Rina's age will be 20. Find her mother’s present age.",
         "choice1": "30",
         "choice2": "20",
         "choice3": "25",
@@ -69,19 +69,19 @@
         "answer": 3
       },
       {
-        "question": "Here x is the answer to the previous part. If the sum of x numbers is 150, their average is?",
-        "choice1": "4",
-        "choice2": "6",
-        "choice3": "8",
-        "choice4": "10",
-        "answer": 2
+        "question": "Here x is the answer to the previous part. The average of x numbers is 15. If 3 more numbers with an average of 18 are added to this group, the new average is closest to?",
+        "choice1": "16",
+        "choice2": "14",
+        "choice3": "15",
+        "choice4": "18",
+        "answer": 3
       },
       {
-        "question": "Here y is the answer to the 2nd question. Identify the missing number.\nA B C\n2 3 y\n3 4 12\n4 5 20\n5 6 ?",
-        "choice1": "30",
-        "choice2": "24",
-        "choice3": "36",
-        "choice4": "42",
+        "question": "Here y is the answer to the 2nd question. Identify the missing number.\nA B C\n2 3 y\n3 4 28\n4 5 45\n5 6 ?",
+        "choice1": "66",
+        "choice2": "72",
+        "choice3": "60",
+        "choice4": "78",
         "answer": 1
       }
     ]
@@ -90,28 +90,28 @@
     "set": "ROUND 1 - SET 4",
     "list": [
       {
-        "question": "The present ages of Ram and Shyam are in the ratio 3:4. After 6 years, their ratio becomes 4:5. Find Ram’s present age.",
-        "choice1": "18",
-        "choice2": "24",
-        "choice3": "30",
+        "question": "At present, Ram’s age is 6 years more than twice Shyam’s age divided by 3. After 6 years, the ratio of their ages becomes 4 : 5. Find Ram’s present age.",
+        "choice1": "48",
+        "choice2": "21",
+        "choice3": "42",
         "choice4": "36",
+        "answer": 3
+      },
+      {
+        "question": "Here x is the answer to the previous sub-part. A train travels the first 21 km at x km/hr and the remaining distance at 14 km/hr. If the total distance is 77 km, find the total time taken by the train (approx.).",
+        "choice1": "2.5",
+        "choice2": "2",
+        "choice3": "3",
+        "choice4": "5.5",
         "answer": 1
       },
       {
-        "question": "Here x is the answer to the previous sub-part. A train travels 72 km at x km/hr. How many hours does it take before it reaches its destination?",
-        "choice1": "3",
-        "choice2": "4",
-        "choice3": "8",
-        "choice4": "6",
-        "answer": 2
-      },
-      {
-        "question": "Here y is your answer to the 2nd sub-part. Find the missing number.\nA B C\n1 y 5\n2 5 7\n3 6 9\n4 7 ?",
-        "choice1": "11",
-        "choice2": "18",
-        "choice3": "15",
-        "choice4": "9",
-        "answer": 1
+        "question": "Here y is your answer to the 2nd sub-part. Find the missing number.\nA B C\n1 y 10\n2 5 40\n3 6 72\n4 7 ?",
+        "choice1": "136",
+        "choice2": "108",
+        "choice3": "124",
+        "choice4": "112",
+        "answer": 4
       }
     ]
   },
@@ -119,19 +119,19 @@
     "set": "ROUND 1 - SET 5",
     "list": [
       {
-        "question": "A man is 22 years older than his son. In two years, his age will be twice the age of his son. The present age of his son is:",
-        "choice1": "24",
-        "choice2": "20",
-        "choice3": "18",
-        "choice4": "16",
+        "question": "At present, a man's age is 24 years more than one-and-a-half times his son’s age. In two years, the man’s age will be twice the son’s age at that time. Find the present age of the son.",
+        "choice1": "22",
+        "choice2": "44",
+        "choice3": "90",
+        "choice4": "55",
         "answer": 2
       },
       {
-        "question": "Here x is your answer to the previous sub-part. If x% of M = 50, find M.",
+        "question": "Here x is your answer to the previous sub-part. If x% of M = 110, find M.",
         "choice1": "250",
-        "choice2": "300",
+        "choice2": "500",
         "choice3": "200",
-        "choice4": "150",
+        "choice4": "125",
         "answer": 1
       },
       {
@@ -148,28 +148,28 @@
     "set": "ROUND 1 - SET 6",
     "list": [
       {
-        "question": "The ratio of ages of A and B is 3:4 and their sum is 70. In 10 years from today, B’s age will be:",
-        "choice1": "30",
-        "choice2": "50",
-        "choice3": "40",
-        "choice4": "60",
+        "question": "There are two people A and B: At present, A’s age is equal to half of the sum of their ages minus one-fourth of B’s age. The sum of their present ages is 72 years. Find B’s age after 10 years.",
+        "choice1": "48",
+        "choice2": "58",
+        "choice3": "24",
+        "choice4": "34",
         "answer": 2
       },
       {
-        "question": "Here x is the answer to the 1st sub-part. A car travels x km at a speed of 6.25 km/hr. In how much time does the car reach its destination?",
-        "choice1": "8",
+        "question": "Here x is the answer to the 1st sub-part. A car travels the first x km at a speed of 7.25 km/hr and the remaining distance at a speed of 14.5 km/hr. Find the total time taken to complete the journey.",
+        "choice1": "3.5",
         "choice2": "6",
-        "choice3": "9.6",
-        "choice4": "4.8",
-        "answer": 1
+        "choice3": "5",
+        "choice4": "2.5",
+        "answer": 2
       },
       {
-        "question": "Here y is your answer to the 2nd question. Find the missing number.\nA B C\n3 4 42\n0.5y 5 90\n5 6 165\n6 7 ?",
+        "question": "Here y is your answer to the 2nd question. Find the missing number.\nA B C\n3 4 42\n4 5 90\n5 y 165\n6 7 ?",
         "choice1": "252",
         "choice2": "273",
         "choice3": "182",
         "choice4": "196",
-        "answer": 3
+        "answer": 2
       }
     ]
   },
@@ -178,18 +178,18 @@
     "list": [
       {
         "question": "A is 7 years older than B, who is twice as old as C. If the total of their ages is 32, how old is B?",
-        "choice1": "10",
-        "choice2": "12",
+        "choice1": "15",
+        "choice2": "17",
         "choice3": "14",
-        "choice4": "16",
-        "answer": 1
+        "choice4": "10",
+        "answer": 4
       },
       {
-        "question": "Here x is the answer to the previous sub-part. A shop gives an x% discount on a product with Marked Price Rs. 250. What is the total discount given?",
+        "question": "Here x is the answer to the previous sub-part. A shop gives an x% discount on a product with Marked Price Rs. 250. What is the profit % if the Cost Price = 180.",
         "choice1": "25",
-        "choice2": "30",
-        "choice3": "35",
-        "choice4": "40",
+        "choice2": "18",
+        "choice3": "15",
+        "choice4": "19",
         "answer": 1
       },
       {
@@ -198,6 +198,93 @@
         "choice2": "79",
         "choice3": "77",
         "choice4": "76",
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "set": "ROUND 1 - SET 8",
+    "list": [
+      {
+        "question": "At present, the age of a father is twice the age of his younger son and 20 years more than the age of his elder son. The sum of the present ages of the father and the two sons is 100 years. Find the present age of the elder son:",
+        "choice1": "28",
+        "choice2": "24",
+        "choice3": "32",
+        "choice4": "18",
+        "answer": 1
+      },
+      {
+        "question": "Here x is the answer to the previous sub-part. The average weight of 10 students in a class is x kg. Two students weighing 46 kg and 62 kg leave the class, and three new students join whose average weight is 56 kg. Find the new average weight of the class (approx.).",
+        "choice1": "27",
+        "choice2": "31",
+        "choice3": "35",
+        "choice4": "22",
+        "answer": 2
+      },
+      {
+        "question": "Here y is your answer to the 2nd question. Find the missing number.\nA B C\n4 6 20\n6 8 28\n8 10 (y+5)\n10 12 ?",
+        "choice1": "120",
+        "choice2": "240",
+        "choice3": "360",
+        "choice4": "180",
+        "answer": 2
+      }
+    ]
+  },
+  {
+    "set": "ROUND 1 - SET 9",
+    "list": [
+      {
+        "question": "At present, A’s age is 4 years more than half of B’s age. C’s age is 6 years less than twice A’s age. The sum of the present ages of A, B, and C is 80 years. Find the present age of B.",
+        "choice1": "30",
+        "choice2": "32",
+        "choice3": "36",
+        "choice4": "34",
+        "answer": 2
+      },
+      {
+        "question": "Here x is the answer to the previous sub-part. A shopkeeper marks an article 40% above its cost price. He allows a discount of 20% on the marked price and still makes a profit of ₹3x on the article. Find the cost price of the article.",
+        "choice1": "850",
+        "choice2": "750",
+        "choice3": "900",
+        "choice4": "800",
+        "answer": 4
+      },
+      {
+        "question": "Here y is your answer to the 2nd question. Find the missing number.\nA B C\n2 3 11\n3 4 19\n0.005y 5 29\n5 6 ?",
+        "choice1": "31",
+        "choice2": "36",
+        "choice3": "41",
+        "choice4": "44",
+        "answer": 3
+      }
+    ]
+  },
+  {
+    "set": "ROUND 1 - SET 10",
+    "list": [
+      {
+        "question": "At present, the ratio of the ages of A and B is 4 : 5. After 6 years, the ratio of the ages of B and C will be 3 : 2. At present, C is 6 years younger than A. Find the present age of A.",
+        "choice1": "18",
+        "choice2": "24",
+        "choice3": "30",
+        "choice4": "20",
+        "answer": 2
+      },
+      {
+        "question": "Here x is the answer to the previous sub-part. A train covers the first 120 km of a journey at x km/hr. It then stops for 30 minutes and covers the same distance at 40 km/hr. Find the total time taken to complete the journey.",
+        "choice1": "8.5",
+        "choice2": "7.5",
+        "choice3": "9.5",
+        "choice4": "10",
+        "answer": 1
+      },
+      {
+        "question": "Here y is your answer to the 2nd question. Find the missing number.\nA B C\n2 3 15\n3 4 28\n4 5 45\n5 2y ?",
+        "choice1": "134",
+        "choice2": "187",
+        "choice3": "193",
+        "choice4": "144",
         "answer": 2
       }
     ]
