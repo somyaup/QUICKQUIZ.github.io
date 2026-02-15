@@ -22,14 +22,6 @@ let setStartTimestamp = null;
 const CORRECT_BONUS = 30;
 
 const TOTAL_TIME = 900; // seconds
-const currentSetLog = {
-  set: 0,
-  setTime: 0,
-  action: null,
-  setScore: 0,
-  // IMPORTANT: pre-fill with nulls
-  questions: []
-};
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
@@ -44,7 +36,6 @@ fetch("questions2.json")
 
 // ---------- START GAME ----------
 function startGame() {
-  sendResultsToSheet(gameLog);
   score = 0;
   currentSetIndex = 0;
   const minutes = Math.floor(timeRemaining / 60);
@@ -58,6 +49,7 @@ function startGame() {
 }
 //--------------START TIMER--------------
 function startTimer() {
+  sendResultsToSheet(gameLog);
   timerInterval = setInterval(() => {
     timeRemaining--;
     minutes = Math.floor(timeRemaining / 60);
@@ -76,6 +68,7 @@ function loadSet() {
   questionsContainer.innerHTML = "";
   setStartTimestamp = Date.now();
   nextBtn.disabled = true;
+  questionAnswered = [];
 
   if (currentSetIndex >= sets.length) {
     clearInterval(timerInterval);
@@ -87,9 +80,13 @@ function loadSet() {
 
   const currentSet = sets[currentSetIndex];
   const questions = currentSet.list;
-
+  currentSetLog.questions = questions.map((_, i) => ({
+    qid: i + 1,
+    time: null,
+    response: null,
+    correct: false
+  }));
   // SET NAME DISPLAY
-
   const playerDisplay = document.getElementById("playerInfo");
   playerDisplay.innerText = `${playerName} (#${playerNumber})`;
   setTitle.innerText = currentSet.set;
@@ -119,14 +116,29 @@ function loadSet() {
 }
 
 // ---------- ENABLE NEXT ONLY IF ALL ANSWERED ----------
-questionsContainer.addEventListener("change", () => {
-  const questions = sets[currentSetIndex].list;
+questionsContainer.addEventListener("click", (event) => {
+  if (event.target.type !== "radio") return;
 
-  const allAnswered = questions.every((_, i) =>
-    document.querySelector(`input[name="q${i}"]:checked`)
-  );
+  const qIndex = Number(event.target.name.replace("q", ""));
+  const optionClicked = Number(event.target.value);
 
-  nextBtn.disabled = !allAnswered;
+  // record time ONLY on first interaction
+  if (!questionAnswered[qIndex]) {
+    questionAnswered[qIndex] = true;
+
+    const timeSpent =
+      Math.round((Date.now() - setStartTimestamp) / 1000);
+
+    currentSetLog.questions[qIndex].time = timeSpent;
+  }
+
+  // always update response & correctness
+  currentSetLog.questions[qIndex].response = optionClicked;
+  currentSetLog.questions[qIndex].correct =
+    optionClicked === sets[currentSetIndex].list[qIndex].answer;
+
+  // enable NEXT only when all questions touched
+  nextBtn.disabled = !questionAnswered.every(Boolean);
 });
 
 function endQuiz(reason) {
@@ -137,7 +149,8 @@ function endQuiz(reason) {
       set: sets[currentSetIndex].set,
       time: timeTaken,
       score: 0,
-      action: reason === "timeout" ? "timeout" : "end"
+      action: reason === "timeout" ? "timeout" : "end",
+      questions: currentSetLog.questions
     });
   }
   gameLog.playerNumber=playerNumber;
@@ -171,7 +184,8 @@ nextBtn.addEventListener("click", () => {
     set: sets[currentSetIndex].set,
     time: timeTaken,
     score: setScore,
-    action: "next"
+    action: "next",
+    questions: currentSetLog.questions
   });
 
   score += setScore;
@@ -189,7 +203,8 @@ skipBtn.addEventListener("click", () => {
     set: sets[currentSetIndex].set,
     time: timeTaken,
     score: 0,
-    action: "skip"
+    action: "skip",
+     questions: currentSetLog.questions
   });
 
   currentSetIndex++;
