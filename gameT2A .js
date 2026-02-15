@@ -22,6 +22,14 @@ let setStartTimestamp = null;
 const CORRECT_BONUS = 30;
 
 const TOTAL_TIME = 900; // seconds
+const currentSetLog = {
+  set: 0,
+  setTime: 0,
+  action: null,
+  setScore: 0,
+  // IMPORTANT: pre-fill with nulls
+  questions: []
+};
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
