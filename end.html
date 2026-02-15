@@ -13,11 +13,109 @@
          <h1 >You earned INR</h1>
         <h1 id="finalScore"></h1>
         <h2 id="participation">(Excluding Participation Fee)</h2>
+        <hr style="width: 60%; margin: 30px 0;" />
+
+  <h2>Lottery Decision</h2>
+
+  <div id="lotterySection">
+    <label>
+      <input type="radio" name="lottery" value="A">
+      Option A: Sure payoff of ₹10
+    </label>
+
+    <label>
+      <input type="radio" name="lottery" value="B">
+      Option B: ₹20 if Head and ₹0 if Tail
+    </label>
+  </div>
+
+  <button id="resolveLotteryBtn" class="btn" disabled>
+    Confirm Lottery Choice
+  </button>
+
+  <div id="lotteryResult"></div>
+
         <p class ="btn">Thank You!</p>
         <!-- <a class="btn" href="gameT1A.html">Play a new set for 2X?</a>
         <a class="btn" href="gameT1B.html">Continue for 15 minutes?</a> -->
       </div>
     </div>
+    <script>/* ---------- CONFIG ---------- */
+
+const WEB_APP_URL =  "https://script.google.com/macros/s/AKfycbzxbYdLXmzDRbFlPtyYt2n0_UCekRvw9byUyKHsPPbdcjtbIJDNjxJNgiuXIo3aOvNtSA/exec";
+
+/* ---------- GET BASE SCORE ---------- */
+
+const finalScoreElement = document.getElementById("finalScore");
+const lotteryResultDiv = document.getElementById("lotteryResult");
+
+const baseScore = Number(localStorage.getItem("mostRecentScore")) || 0;
+const lotteryChoice = localStorage.getItem("lotteryChoice");
+
+let lotteryPayoff = 0;
+let flipResult = null;
+
+/* ---------- RESOLVE LOTTERY ---------- */
+
+function resolveLottery(choice) {
+  if (choice === "A") {
+    return 10;
+  }
+
+  if (choice === "B") {
+    flipResult = Math.random() < 0.5 ? "Head" : "Tail";
+    return flipResult === "Head" ? 20 : 0;
+  }
+
+  return 0;
+}
+
+if (lotteryChoice) {
+  lotteryPayoff = resolveLottery(lotteryChoice);
+}
+
+/* ---------- TOTAL EARNINGS ---------- */
+
+const totalEarnings = baseScore + lotteryPayoff;
+finalScoreElement.innerText = totalEarnings;
+
+/* ---------- DISPLAY LOTTERY RESULT ---------- */
+
+if (lotteryChoice === "A") {
+  lotteryResultDiv.innerHTML =
+    `<p>You chose the sure option and earned ₹10.</p>`;
+}
+
+if (lotteryChoice === "B") {
+  lotteryResultDiv.innerHTML =
+    `<p>Lottery outcome: ${flipResult} → You earned ₹${lotteryPayoff}</p>`;
+}
+
+/* ---------- PREPARE FINAL DATA ---------- */
+
+let gameLog = JSON.parse(localStorage.getItem("gameLog")) || {};
+
+gameLog.final = {
+  baseScore: baseScore,
+  lotteryChoice: lotteryChoice,
+  lotteryOutcome: flipResult,
+  lotteryPayoff: lotteryPayoff,
+  totalEarnings: totalEarnings
+};
+
+/* ---------- POST TO GOOGLE SHEET ---------- */
+
+function sendFinalResults(data) {
+  fetch(WEB_APP_URL, {
+    method: "POST",
+    body: JSON.stringify(data)
+  })
+  .then(() => console.log("Final data sent"))
+  .catch(err => console.error("Error sending data:", err));
+}
+
+sendFinalResults(gameLog);
+</script>
     <script src="end.js"></script>
   </body>
 </html>
