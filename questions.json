@@ -11,7 +11,7 @@
         "answer": 4
       },
       {
-        "question": "Here x is the answer to the previous sub-part. A shop gives a x% discount on a product with Marked Price Rs. 200. What is the total discount given?",
+        "question":"Here, ‘x’ is the answer to the 1st sub-part. A car travels the first x/2km at a speed of 7.25 km/hr and the remaining x/2 distance at a speed of 14.5 km/hr. Find the total time taken to complete the journey.",
         "choice1": "20",
         "choice2": "10",
         "choice3": "30",
