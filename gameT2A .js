@@ -11,16 +11,24 @@ const playerNumber = localStorage.getItem("playerNumber")+"T2A";
 
 let sets = [];
 let currentSetIndex = 0;
+let questionAnswered = [];
 let score = 0;
 let gameLog = {
-  playerNumber: playerNumber+"Start",
+  playerNumber: playerNumber+"start",
   playerName: playerName,
   total: 0,
   results: []
 };
 let setStartTimestamp = null;
 const CORRECT_BONUS = 30;
-
+const currentSetLog = {
+  set: 0,
+  setTime: 0,
+  action: null,
+  setScore: 0,
+  // IMPORTANT: pre-fill with nulls
+  questions: []
+};
 const TOTAL_TIME = 900; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
@@ -57,7 +65,7 @@ function startTimer() {
     timeLeftText.innerText =
     `${minutes}:${seconds.toString().padStart(2, "0")}`;
 
-    if (timeRemaining <= 0) {
+    if (timeRemaining <=0) {
       clearInterval(timerInterval);
       endQuiz("timeout");
     }
@@ -69,7 +77,7 @@ function loadSet() {
   setStartTimestamp = Date.now();
   nextBtn.disabled = true;
   questionAnswered = [];
-
+  // prepare question slots
   if (currentSetIndex >= sets.length) {
     clearInterval(timerInterval);
     localStorage.setItem("mostRecentScore", score);
@@ -100,7 +108,7 @@ function loadSet() {
   questions.forEach((q, qIndex) => {
     const block = document.createElement("div");
     block.className = "question-block";
-    q.question = renderQuestion(q.question);
+    q.question=renderQuestion(q.question);
     block.innerHTML = `
       <h3>${q.question}</h3>
       ${[1, 2, 3, 4].map(n => `
@@ -110,7 +118,6 @@ function loadSet() {
         </label>
       `).join("")}
     `;
-
     questionsContainer.appendChild(block);
   });
 }
@@ -153,10 +160,10 @@ function endQuiz(reason) {
       questions: currentSetLog.questions
     });
   }
-  gameLog.playerNumber=playerNumber;
   gameLog.total = score;
+  gameLog.playerNumber = playerNumber;
   sendResultsToSheet(gameLog);
-  localStorage.setItem("mostRecentScore", score)
+  localStorage.setItem("mostRecentScore", score);
   window.location.href = "end.html";
 }
 
@@ -204,7 +211,7 @@ skipBtn.addEventListener("click", () => {
     time: timeTaken,
     score: 0,
     action: "skip",
-     questions: currentSetLog.questions
+    questions: currentSetLog.questions
   });
 
   currentSetIndex++;
