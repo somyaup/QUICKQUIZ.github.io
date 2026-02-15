@@ -223,10 +223,10 @@
       },
       {
         "question": "Here y is your answer to the 2nd question. Find the missing number.\nA B C\n4 6 20\n6 8 28\n8 10 (y+5)\n10 12 ?",
-        "choice1": "120",
-        "choice2": "240",
-        "choice3": "360",
-        "choice4": "180",
+        "choice1": "22",
+        "choice2": "44",
+        "choice3": "42",
+        "choice4": "24",
         "answer": 2
       }
     ]
