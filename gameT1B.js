@@ -72,6 +72,7 @@ function startTimer() {
 }
 // ---------- LOAD ONE SET ----------
 function loadSet() {
+  window.scrollTo({ top: 0, behavior: "auto" });
   questionsContainer.innerHTML = "";
   setStartTimestamp = Date.now();
   nextBtn.disabled = true;
