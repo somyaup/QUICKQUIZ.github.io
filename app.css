@@ -125,3 +125,8 @@ input {
 input::placeholder {
   color: #aaa;
 }
+input[type="radio"] {
+  width: 15px; /* Adjust size as needed */
+  height: 15px; /* Adjust size as needed */
+  vertical-align: left; /* Helps with alignment next to text */
+}
