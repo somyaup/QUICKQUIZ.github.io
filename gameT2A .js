@@ -29,7 +29,7 @@ const currentSetLog = {
   // IMPORTANT: pre-fill with nulls
   questions: []
 };
-const TOTAL_TIME = 900; // seconds
+const TOTAL_TIME = 1200; // seconds
 let timeRemaining = TOTAL_TIME;
 let timerInterval = null;
 
