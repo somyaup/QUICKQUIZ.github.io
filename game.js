@@ -217,7 +217,7 @@ skipBtn.addEventListener("click", () => {
     score: 0,
     action: "skip"
   });
-  window.location.href = "end.html";
+  window.location.href = "lottery.html";
   currentSetIndex++;
   loadSet();
 });
