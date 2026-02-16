@@ -19,7 +19,7 @@ let gameLog = {
   results: []
 };
 let setStartTimestamp = null;
-const CORRECT_BONUS = 0;
+const CORRECT_BONUS = 0.1;
 
 const TOTAL_TIME = 10; // seconds
 let timeRemaining = TOTAL_TIME;
