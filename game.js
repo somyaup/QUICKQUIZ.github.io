@@ -190,10 +190,11 @@ nextBtn.addEventListener("click", () => {
   });
 
   setScore *= CORRECT_BONUS; // since allCorrect required
-  if(setScore == 0) {alert ("You got a few questions wrong! Refrsh and Retry");}  
+  if(setScore == 0) {alert ("You got a few questions wrong! Restart in a new window");}  
   else {
-    alert ("You got all questions right! Proceed to the new link!");
+    alert ("You got all questions right! Proceed to Lottery!");
     skipBtn.disabled = false;
+    skipBtn.textContent = "Lottery";
   } 
 
   score += setScore;
